@@ -26,7 +26,7 @@ public class TokenService {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("WiseCode med.API")
+                    .withIssuer("Medical Shop")
                     .withSubject(user.getLogin())
                     .withExpiresAt(expiresDate())
                     .sign(algorithm);
@@ -39,7 +39,7 @@ public class TokenService {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
-                    .withIssuer("WiseCode med.API")
+                    .withIssuer("Medical Shop")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
