@@ -34,7 +34,6 @@ public class SecurityFilter extends OncePerRequestFilter {
 
             var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println("logado");
         }
 
         filterChain.doFilter(request, response);
@@ -44,10 +43,9 @@ public class SecurityFilter extends OncePerRequestFilter {
     private String token(HttpServletRequest request) {
         var authorizationHeader = request.getHeader("Authorization");
 
-        if(authorizationHeader != null) {
-            return authorizationHeader.replace("Bearer ", " ");
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            return authorizationHeader.substring(7);
         }
         return null;
-
     }
 }
