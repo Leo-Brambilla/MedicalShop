@@ -4,6 +4,7 @@ import com.leobrambilla.medicalshop.domain.user.AuthenticationData;
 import com.leobrambilla.medicalshop.domain.user.User;
 import com.leobrambilla.medicalshop.domain.user.UserRepository;
 import com.leobrambilla.medicalshop.infra.security.TokenService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
