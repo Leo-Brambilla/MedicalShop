@@ -1,10 +1,9 @@
 package com.leobrambilla.medicalshop.domain.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
+import com.leobrambilla.medicalshop.domain.address.Address;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,8 +27,26 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotNull(message = "Login is required")
     private String login;
+
+    @NotNull(message = "Password is required")
     private String password;
+
+    @NotNull(message = "Name is required")
+    private String name;
+
+    @Email(message = "Email should be valid")
+    private String email;
+
+    @NotNull(message = "Phone number is required")
+    private String phone;
+
+    @NotNull(message = "Address is required")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
     public void changePassword(String newPassword, PasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(newPassword);
@@ -64,4 +81,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

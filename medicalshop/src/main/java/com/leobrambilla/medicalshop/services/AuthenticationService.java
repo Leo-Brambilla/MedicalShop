@@ -1,5 +1,6 @@
-package com.leobrambilla.medicalshop.domain.user;
+package com.leobrambilla.medicalshop.services;
 
+import com.leobrambilla.medicalshop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
