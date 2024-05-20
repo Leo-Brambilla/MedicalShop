@@ -1,7 +1,7 @@
 package com.leobrambilla.medicalshop.controller;
 
 import com.leobrambilla.medicalshop.domain.product.Product;
-import com.leobrambilla.medicalshop.domain.product.ProductRepository;
+import com.leobrambilla.medicalshop.repositories.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

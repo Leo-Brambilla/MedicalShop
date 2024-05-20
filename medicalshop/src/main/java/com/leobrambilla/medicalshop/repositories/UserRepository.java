@@ -1,5 +1,6 @@
-package com.leobrambilla.medicalshop.domain.user;
+package com.leobrambilla.medicalshop.repositories;
 
+import com.leobrambilla.medicalshop.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

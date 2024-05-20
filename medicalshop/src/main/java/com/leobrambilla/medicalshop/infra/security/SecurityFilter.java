@@ -1,6 +1,7 @@
 package com.leobrambilla.medicalshop.infra.security;
 
-import com.leobrambilla.medicalshop.domain.user.UserRepository;
+import com.leobrambilla.medicalshop.repositories.UserRepository;
+import com.leobrambilla.medicalshop.services.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,7 +28,6 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,HttpServletResponse response, FilterChain filterChain ) throws ServletException, IOException {
 
         var tokenJWT = token(request);
-        System.out.println(tokenJWT);
 
         if(tokenJWT != null) {
             var subject = tokenService.getSubject(tokenJWT);
